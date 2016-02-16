@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0;'>
+    <title>Notes</title>
+
+    <link href='styles/libs/fonts.css' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='styles/semantic.min.css'>
+    <link rel="stylesheet" href="styles/libs/monokai.min.css">
+    <link rel='stylesheet' href='styles/main.css'>
+</head>
+<body id="book">
+    <div class="book-wrap">
+        <div class="book-wrap__inner">
+            <div class="book__col--40" style="overflow: hidden;">
+                <textarea class="js-input book__inputtext">
+# Hello, Wrold.
+------
+
+Here is a list of the stuff you can do in markdown.
+
+## First some obvious stuff
+
+* Lists!
+* in bullet
+* form
+
+### Also...
+
+1. numbered lists!
+2. in numerical
+3. form
+
+#### And then there was this
+
+1. Numerical bullets
+    * with sub bullets
+
+##### But then also don't forget
+
+[Links!](http://www.google.com) Links to all sorts of stuff
+
+###### And finally
+
+![Pandas slide on things](https://media.giphy.com/media/AqZjlaUAjMRB6/giphy.gif)
+
+But also don't forget...
+
+```javascript
+(function() {
+    console.log('hello, Wrold!');
+})();
+```
+
+Also this
+
+```html
+<!doctype html>
+<html>
+    <head></head>
+    <body></body>
+</html>
+```
+And so on so forth.
+
+Happy writing!
+
+                </textarea> 
+            </div>
+            <div class="book__col--60">
+                <div class="book__content">
+                    <div class="main-content js-content" style="padding-bottom: 100px;">
+                        <h1>
+                            Hello, Wrold!
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src='/javascript/libs/jquery.min.js'></script>
+    <script src="javascript/libs/highlight.min.js"></script>
+    <script src="/javascript/libs/marked.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+        if ( localStorage.getItem( 'data' ) ) {
+            $('.js-input').val( localStorage.getItem('data') );
+            $('.js-content').html( marked( $('.js-input').val() ) );
+        }
+        else {
+            $('.js-content').html( marked( $('.js-input').val() ) );
+        }
+        $('.js-input').on('keyup', function( e ) {
+            var val = $( e.target ).val();
+            var transformed = marked( val );
+            $('.js-content').html( transformed )
+            $('pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+            setTimeout(function() {
+                $('.js-content').parent().parent()[ 0 ].scrollTop = 10000000;
+            }, 250);
+            localStorage.setItem('data', val);
+        });
+    </script>
+</body>
+</html>
