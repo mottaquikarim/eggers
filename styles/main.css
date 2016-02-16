@@ -247,6 +247,20 @@ html, body {
     display: flex;
 }
 
+@media all and ( max-width: 789px ) {
+    #book .main-content__row {
+        display: block;
+    }
+
+    #book .eggers {
+        margin: 0 auto;
+    }
+
+    #book .flex-centered {
+        text-align: center;
+    }
+}
+
 #book .flex-centered {
     align-self: center;
 }
